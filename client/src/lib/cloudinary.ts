@@ -1,0 +1,26 @@
+const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+
+export async function uploadToCloudinary(file: File): Promise<string> {
+  if (!CLOUD_NAME || !UPLOAD_PRESET) {
+    throw new Error('Cloudinary is not configured. Set VITE_CLOUDINARY_CLOUD_NAME and VITE_CLOUDINARY_UPLOAD_PRESET.');
+  }
+
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('upload_preset', UPLOAD_PRESET);
+  formData.append('folder', 'community-hero');
+
+  const response = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+    { method: 'POST', body: formData },
+  );
+
+  const data = await response.json() as { secure_url?: string; error?: { message: string } };
+
+  if (!response.ok || !data.secure_url) {
+    const reason = data.error?.message ?? `HTTP ${response.status}`;
+    throw new Error(`Image upload failed: ${reason}. Make sure the upload preset "${UPLOAD_PRESET}" is set to Unsigned in your Cloudinary dashboard.`);
+  }
+  return data.secure_url;
+}

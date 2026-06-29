@@ -1,0 +1,14 @@
+{
+  "name": "community-hero",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hyperlocal community issue reporting platform",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "build:server": "npm run build --prefix server",
+    "build:client": "npm run build --prefix client"
+  }
+}

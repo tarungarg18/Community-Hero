@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+client/dist/
+server/dist/
+
+# Environment and secrets (never commit)
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+!.env.example
+!**/.env.example
+
+# Firebase service account keys
+*-firebase-adminsdk-*.json
+firebase-adminsdk*.json
+serviceAccountKey.json
+google-services.json
+
+# Logs and OS
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Firebase local cache
+.firebase/
+
+# Test / coverage
+coverage/
