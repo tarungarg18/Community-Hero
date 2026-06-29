@@ -86,7 +86,3 @@ If you downloaded a service account JSON, copy values into `server/.env` and kee
 ## Deploy (optional)
 
 See [docs/LOCAL_SETUP.md#deploy-optional](docs/LOCAL_SETUP.md) for Firebase Hosting and Cloud Run notes.
-
-## License
-
-MIT
