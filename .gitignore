@@ -36,5 +36,9 @@ Thumbs.db
 # Firebase local cache
 .firebase/
 
+# Local deploy script (reads from .env, keep local only)
+deploy.ps1
+.cloudrun_url.txt
+
 # Test / coverage
 coverage/
